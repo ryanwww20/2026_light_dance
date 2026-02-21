@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beat 打點器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Beat 打點器</h1>
+    </header>
+
+    <section class="player">
+      <label for="wav-select">選擇音檔 (.wav)</label>
+      <select id="wav-select">
+        <option value="">-- 載入中 --</option>
+      </select>
+
+      <div class="controls">
+        <button type="button" id="btn-play-pause" aria-label="播放">▶ 播放</button>
+      </div>
+
+      <div class="seek-wrap">
+        <span class="time current" id="time-current">0.000</span>
+        <input type="range" id="seek" min="0" max="100" value="0" step="0.001" class="seek-bar">
+        <span class="time total" id="time-total">0.000</span>
+      </div>
+    </section>
+
+    <section class="beat-section">
+      <div class="scene-input-wrap">
+        <label for="scene-select">Scene</label>
+        <select id="scene-select">
+          <option value="">-- 請選擇 scene --</option>
+        </select>
+      </div>
+      <div class="beat-counter-wrap">
+        <label>Beat 打點（點擊記錄目前秒數）</label>
+        <button type="button" id="beat-counter" class="beat-counter-btn">
+          <span id="beat-count">0</span> 拍
+        </button>
+        <p class="hint">播放中點擊上方按鈕，會將目前時間（小數三位）寫入 CSV 的該 scene 欄位。</p>
+      </div>
+      <p id="record-feedback" class="feedback" aria-live="polite"></p>
+    </section>
+  </div>
+  <audio id="audio" preload="metadata"></audio>
+  <script src="app.js"></script>
+</body>
+</html>
